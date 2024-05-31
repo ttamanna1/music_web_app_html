@@ -43,13 +43,21 @@ There are two videos to support:
 # Seed the development database
 (html-application-starter-venv); python seed_dev_database.py
 
-# Run the tests (with extra logging)
+# Run the tests (with extra logging) - see below if you have any issues
 (html-application-starter-venv); pytest -sv
 
 # Run the app
 (html-application-starter-venv); python app.py
 # Now visit http://localhost:5001/emoji in your browser
 ```
+
+<br>
+<details>
+  <summary>I get a <code>ModuleNotFoundError: No module named 'psycopg'</code></summary>
+  <br>
+If, after activating your <code>venv</code> and installing dependencies, you see this error when running <code>pytest</code>, please deactivate and reactivate your <code>venv</code>. This should solve the problem - if not, contact your coach.
+</details>
+<be>
 
 If you would like to remove the example code:
 
