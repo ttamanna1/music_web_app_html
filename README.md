@@ -33,6 +33,10 @@ There are two videos to support:
 (html-application-starter-venv); pip install -r requirements.txt
 # Read below if you see an error with `python_full_version`
 
+# Install the virtual browser we will use for testing
+; playwright install
+# If you encounter problems at this stage please contact your coach
+
 # Create a test and development database
 (html-application-starter-venv); createdb YOUR_PROJECT_NAME
 (html-application-starter-venv); createdb YOUR_PROJECT_NAME_test
