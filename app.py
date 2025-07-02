@@ -1,6 +1,11 @@
 import os
 from flask import Flask, request, render_template
 from lib.database_connection import get_flask_database_connection
+from lib.album_repository import AlbumRepository
+from lib.album import Album
+from lib.artist import Artist
+from lib.artist_repository import ArtistRepository
+
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -20,6 +25,26 @@ def get_emoji():
     # But first, it gets processed to look for placeholders like {{ emoji }}
     # These placeholders are replaced with the values we pass in as arguments
     return render_template('emoji.html', emoji=':)')
+
+
+@app.route('/albums', methods=['GET'])
+def get_albums():    
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    albums = repository.all()
+    return render_template("albums.html", albums=albums)
+
+@app.route('/albums/<int:id>', methods=['GET'])
+def get_single_album(id):
+    connection = get_flask_database_connection(app)
+    album_repository = AlbumRepository(connection)
+    album = album_repository.find(id)
+    artist_repository = ArtistRepository(connection)
+    artist = artist_repository.find(album.artist_id)
+    return render_template("album.html", album=album, artist=artist)
+
+    
+
 
 # This imports some more example routes for you to see how they work
 # You can delete these lines if you don't need them.
