@@ -31,6 +31,7 @@ def test_create(db_connection):
     repository = AlbumRepository(db_connection)
     album = Album(None, 'OK, Computer', 1997, 5)
     assert repository.create(album) == None
+    assert album.id == 13
     result = repository.all()
     assert result == [
         Album(1, 'Doolittle', 1989, 1),

@@ -11,6 +11,8 @@
                 Title: {{album.title}}
                 Released: {{album.release_year}}
             </div>
+            <a href="/albums/{{album.id}}">Go to album page</a>
         {% endfor %}
+        <a href="/albums/new_album">Add a new album</a>
     </body>
 </html>
